@@ -48,7 +48,7 @@ class InferenceEngine:
 class ExpertSystemApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Expert System - Flu vs Cold Diagnosis")
+        self.root.title("Expert System - Simple Symptoms Checker")
 
         self.symptom_vars = {
             "fever": tk.BooleanVar(),
