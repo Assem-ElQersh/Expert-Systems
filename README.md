@@ -2,7 +2,7 @@
   Expert Systems in Artificial Intelligence
 </h1>
 <h3 align="center">
-  This Expert Systems Repo is still under development
+  How to program knowledge into a system
 </h3>
 
 ## Overview
@@ -52,11 +52,11 @@ Expert systems have a wide range of applications across various industries:
 
 - **Limited to Specific Domains**: Expert systems are typically designed for specific domains and may not perform well outside their area of expertise.
   
-- **Lack of Common Sense**: Unlike humans, expert systems lack general common sense and can only operate within the confines of their programmed knowledge and rules.
+- **Lack of Common Sense**: Unlike humans, expert systems lack general common sense and can only operate within their programmed knowledge and rules.
 
 - **Maintenance**: Updating and maintaining the knowledge base can be challenging as new information becomes available or as domain knowledge evolves.
 
-Expert systems are a powerful tool in the field of artificial intelligence, offering significant benefits in specialized domains where expert knowledge is critical. By mimicking the decision-making process of human experts, these systems can provide valuable insights, recommendations, and solutions in areas ranging from medicine to finance to customer service.
+Expert systems are a powerful tool in artificial intelligence, offering significant benefits in specialized domains where expert knowledge is critical. By mimicking the decision-making process of human experts, these systems can provide valuable insights, recommendations, and solutions in areas ranging from medicine to finance to customer service.
 
 ## Further Reading
 
