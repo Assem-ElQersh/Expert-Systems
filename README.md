@@ -1,69 +1,110 @@
-<h1 align="center">
-  Expert Systems in Artificial Intelligence
-</h1>
-<h3 align="center">
-  How to program knowledge into a system
-</h3>
+# Expert Systems
 
-## Overview
+A collection of rule-based expert systems built in Python, each demonstrating how artificial intelligence can encode domain knowledge to advise non-expert users — mirroring the architecture shown below.
 
-Expert systems are a branch of artificial intelligence (AI) that focuses on emulating the decision-making abilities of human experts. These systems are designed to solve complex problems within specific domains by applying expert knowledge and logical reasoning. Unlike traditional programming, where rules are explicitly coded, expert systems use a knowledge base and an inference engine to process information and make decisions, much like a human expert would.
+![Expert System Architecture](Image%20for%20illustration.png)
 
-## Key Components of Expert Systems
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/dd2601eb-cc84-44b5-84f6-8a867b1cd593" alt="Expert Systems Image" />
-</p>
+## What Is an Expert System?
 
-1. **Knowledge Base**:
-    - The knowledge base is a collection of domain-specific facts, rules, and heuristics. It represents the expertise in a particular field, such as medicine, finance, or engineering.
-    - The knowledge base is built by gathering information from human experts and structuring it in a way that the system can use for reasoning.
+An expert system is an AI program that emulates the decision-making ability of a human expert in a specific domain. It operates through three core components:
 
-2. **Inference Engine**:
-    - The inference engine is the brain of the expert system. It processes the information in the knowledge base and applies logical rules to deduce new facts or reach conclusions.
-    - The inference engine uses techniques such as forward chaining and backward chaining to explore possible solutions and provide recommendations or decisions.
+| Component | Role | Implementation |
+|---|---|---|
+| **Knowledge Base** | Stores domain facts and rules provided by a human expert | `knowledge_base.py` |
+| **Rules Engine (Inference Engine)** | Evaluates rules against user-supplied facts to reach conclusions | `inference_engine.py` |
+| **User Interface** | Collects input from the non-expert user and presents advice | `app.py` (Streamlit) |
 
-3. **User Interface**:
-    - The user interface allows users to interact with the expert system. Users input their queries or problems, and the system outputs solutions, explanations, or recommendations.
-    - A well-designed user interface can make the expert system accessible even to non-experts.
+### Data Flow
 
-## Applications of Expert Systems
+```
+Non-expert User
+      │
+      │  Sample Input (symptoms / trait answers)
+      ▼
+┌─────────────────┐        ┌──────────────────┐        ┌────────────────────┐
+│  User Interface │◄──────►│   Rules Engine   │◄──────►│  Knowledge Base    │
+│    (app.py)     │        │(inference_engine)│        │(knowledge_base.py) │
+└─────────────────┘        └──────────────────┘        └────────────────────┘
+      │                                                         ▲
+      │  Advice / Recommendations                               │
+      ▼                                                  Knowledge from
+Non-expert User                                          a Domain Expert
+```
 
-Expert systems have a wide range of applications across various industries:
+---
 
-- **Medical Diagnosis**: Expert systems in healthcare assist doctors in diagnosing diseases and suggesting treatment plans based on patient symptoms, medical history, and expert knowledge.
-  
-- **Financial Services**: In finance, expert systems help in risk assessment, financial planning, and investment decisions by analyzing market trends, historical data, and financial expertise.
+## Systems in This Repository
 
-- **Troubleshooting and Maintenance**: Expert systems guide technicians in troubleshooting issues and performing maintenance on complex machinery, improving efficiency and reducing downtime.
+### 🩺 Symptoms Checker
 
-- **Customer Support**: Automated customer support systems use expert systems to provide users with quick answers to common issues and guide them through troubleshooting steps.
+> `symptoms-checker/`
 
-## Advantages of Expert Systems
+A medical triage expert system that analyses reported symptoms and returns a ranked list of possible conditions with confidence scores and recommended actions.
 
-- **Consistency**: Unlike human experts, expert systems can consistently apply the same rules and logic without fatigue or emotional bias.
-  
-- **Availability**: Expert systems can be available 24/7, providing expertise whenever it is needed.
+- **12 rules** covering flu, cold, COVID-19, allergies, strep throat, pneumonia, and more
+- Weighted forward-chaining inference with configurable confidence threshold
+- Streamlit UI with grouped symptom checkboxes and progress-bar confidence display
 
-- **Cost-Effectiveness**: By automating expert knowledge, organizations can reduce the cost of training and hiring human experts.
+```bash
+cd symptoms-checker
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-- **Scalability**: Expert systems can be deployed to serve a large number of users simultaneously, making them ideal for large-scale applications.
+---
 
-## Limitations of Expert Systems
+### 🎯 Career Path Advisor
 
-- **Limited to Specific Domains**: Expert systems are typically designed for specific domains and may not perform well outside their area of expertise.
-  
-- **Lack of Common Sense**: Unlike humans, expert systems lack general common sense and can only operate within their programmed knowledge and rules.
+> `career-advisor/`
 
-- **Maintenance**: Updating and maintaining the knowledge base can be challenging as new information becomes available or as domain knowledge evolves.
+A career guidance expert system that matches a user's interests, skills, values, personality, and education to personalised career recommendations with step-by-step roadmaps.
 
-Expert systems are a powerful tool in artificial intelligence, offering significant benefits in specialized domains where expert knowledge is critical. By mimicking the decision-making process of human experts, these systems can provide valuable insights, recommendations, and solutions in areas ranging from medicine to finance to customer service.
+- **12 career rules** spanning technology, healthcare, law, engineering, education, and more
+- Weighted trait-matching inference with adjustable match threshold
+- Streamlit UI with trait-selection dropdowns and expandable career roadmaps
+
+```bash
+cd career-advisor
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+---
+
+## Repository Structure
+
+```
+Expert-Systems/
+├── README.md
+├── LICENSE
+├── Image for illustration.png
+├── symptoms-checker/
+│   ├── knowledge_base.py       ← rules & medical facts
+│   ├── inference_engine.py     ← weighted forward-chaining
+│   ├── app.py                  ← Streamlit UI
+│   ├── requirements.txt
+│   └── README.md
+└── career-advisor/
+    ├── knowledge_base.py       ← career rules & roadmaps
+    ├── inference_engine.py     ← weighted trait matching
+    ├── app.py                  ← Streamlit UI
+    ├── requirements.txt
+    └── README.md
+```
+
+## Requirements
+
+- Python 3.10+
+- Streamlit 1.32+
+
+Each system has its own `requirements.txt`. There are no shared dependencies beyond the Python standard library.
 
 ## Further Reading
 
-For more information on expert systems and their applications, consider exploring the following resources:
-
-- **Books**: "[Artificial Intelligence: A Guide to Intelligent Systems" by Michael Negnevitsky](http://www.academia.dk/BiologiskAntropologi/Epidemiologi/DataMining/Artificial_Intelligence-A_Guide_to_Intelligent_Systems.pdf).
+- Negnevitsky, M. — *Artificial Intelligence: A Guide to Intelligent Systems* (3rd ed.)
+- Russell, S. & Norvig, P. — *Artificial Intelligence: A Modern Approach* (4th ed.)
+- [Streamlit Documentation](https://docs.streamlit.io)
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](https://github.com/Assem-ElQersh/Expert-System/blob/main/LICENSE) file for details.
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
