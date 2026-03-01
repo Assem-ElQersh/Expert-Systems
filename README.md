@@ -2,7 +2,9 @@
 
 A collection of rule-based expert systems built in Python, each demonstrating how artificial intelligence can encode domain knowledge to advise non-expert users — mirroring the architecture shown below.
 
-![Expert System Architecture](Image%20for%20illustration.png)
+<p align="center">
+  <img src="Image%20for%20illustration.png" alt="Expert System Architecture" width="600">
+</p>
 
 ## What Is an Expert System?
 
